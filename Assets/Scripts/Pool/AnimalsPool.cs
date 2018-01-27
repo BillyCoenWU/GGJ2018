@@ -3,15 +3,15 @@
     using UnityEngine;
     using System.Collections.Generic;
 
-    public class ObstaclesPool : Singleton<ObstaclesPool>
+    public class AnimalsPool : Singleton<AnimalsPool>
     {
         [SerializeField]
-        private int m_count = 20;
+        private int m_count = 0;
 
         [SerializeField]
         private Object m_reference = null;
 
-        private Queue<Obstacle> m_obstacles = null;
+        private Queue<Bird> m_birds = null;
 
         private void Awake()
         {
@@ -23,30 +23,30 @@
 
         private void InitPool()
         {
-            m_obstacles = new Queue<Obstacle>();
+            m_birds = new Queue<Bird>();
 
             for (int i = 0; i < m_count; i++)
             {
-                Restore(GetObstacle());
+                Restore(GetBird());
             }
         }
 
-        public Obstacle Load()
+        public Bird Load()
         {
-            return m_obstacles.Count > 0 ? m_obstacles.Dequeue() : GetObstacle();
+            return m_birds.Count > 0 ? m_birds.Dequeue() : GetBird();
         }
 
-        public void Restore(Obstacle obstacle)
+        public void Restore(Bird tile)
         {
-            m_obstacles.Enqueue(obstacle);
+            m_birds.Enqueue(tile);
 
-            obstacle.gameObject.SetActive(false);
-            obstacle.transform.SetParent(transform);
+            tile.gameObject.SetActive(false);
+            tile.transform.SetParent(transform);
         }
 
-        private Obstacle GetObstacle()
+        private Bird GetBird()
         {
-            return CreateByReference().GetComponent<Obstacle>();
+            return CreateByReference().GetComponent<Bird>();
         }
 
         private GameObject CreateByReference()

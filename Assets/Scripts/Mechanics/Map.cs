@@ -78,6 +78,11 @@
             return (HexaTile.TYPE)Random.Range(0, 6);
         }
 
+        public Sprite GetAnimalSprite (Bird.TYPE type)
+        {
+            return m_mapAtlas.GetSprite();
+        }
+
         public Sprite GetSprite (HexaTile.TYPE type)
         {
             return m_mapAtlas.GetSprite(Constantes.PATHS[type]);

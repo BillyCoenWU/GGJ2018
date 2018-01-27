@@ -15,6 +15,12 @@
 
         public static readonly Quaternion IDENTITY = Quaternion.identity;
 
+        public static readonly Dictionary<Bird.TYPE, string> ANIMALS = new Dictionary<Bird.TYPE, string>()
+        {
+            { Bird.TYPE.OWL,    "Owl"  },
+            { Bird.TYPE.HAWK,   "Hawk" }
+        };
+
         public static readonly Dictionary<HexaTile.TYPE, string> PATHS = new Dictionary<HexaTile.TYPE, string>()
         {
             { HexaTile.TYPE.GRASS,  "Grass" },

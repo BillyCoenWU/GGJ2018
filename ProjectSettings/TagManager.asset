@@ -41,3 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Terrain
+    uniqueID: 780880009
+    locked: 0
+  - name: Objects
+    uniqueID: 1332044763
+    locked: 0
+  - name: Animals
+    uniqueID: 3730310117
+    locked: 0

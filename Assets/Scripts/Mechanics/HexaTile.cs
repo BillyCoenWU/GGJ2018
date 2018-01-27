@@ -7,9 +7,9 @@
         public enum TYPE
         {
             GRASS = 0,
-            RIVER,
             GROUND,
-            
+            RIVER,
+
             ROCK,
             TREE,
 
@@ -32,9 +32,16 @@
 
             public readonly Vector2 POSITION = Constantes.VECTOR_TWO_ZERO;
             
+            public Obstacle obstacle = null;
+
             private TYPE m_type = TYPE.GRASS;
             public TYPE type
             {
+                set
+                {
+                    m_type = value;
+                }
+
                 get
                 {
                     return m_type;
@@ -60,6 +67,8 @@
             }
         }
 
+        private SpriteRenderer m_renderer = null;
+        
         private Data m_data = null;
         public Data data
         {
@@ -69,28 +78,28 @@
             }
         }
         
-        private SpriteRenderer m_renderer = null;
-        
         public void SetInfos (Data data)
         {
             m_data = data;
 
+            if(m_data.type == TYPE.ROCK || m_data.type == TYPE.TREE)
+            {
+                m_data.obstacle = ObstaclesPool.Instance.Load();
+                m_data.obstacle.SetType(this);
+
+                m_data.type = (TYPE)Random.Range(0, 2);
+            }
+
             m_renderer = GetComponent<SpriteRenderer>();
 
-            SetColor();
-
-            switch(m_data.type)
-            {
-
-            }
-            
-            //m_renderer.sprite = Map.Instance.GetSprite(m_data.type);
+            m_renderer.sprite = Map.Instance.GetSprite(m_data.type);
 
             transform.localPosition = m_data.POSITION;
 
             gameObject.SetActive(true);
         }
 
+        /*
         public void SetColor ()
         {
             switch (m_data.type)
@@ -119,5 +128,6 @@
                     break;
             }
         }
+        */
     }
 }

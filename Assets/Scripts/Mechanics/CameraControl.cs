@@ -38,9 +38,15 @@
         {
             float lerp = 0.0f;
 
-            while(lerp < 1.0f)
+            Vector3 startPosition = transform.localPosition;
+            Vector3 finalPosition = m_target.transform.localPosition;
+            finalPosition.z = startPosition.z;
+
+            while (lerp < 1.0f)
             {
                 lerp += Time.deltaTime;
+
+                transform.localPosition = Vector3.Lerp(startPosition, finalPosition, Easings.QuadraticEaseOut(lerp));
 
                 yield return null;
             }

@@ -10,7 +10,7 @@
         {
             m_tile = tile;
 
-            transform.localPosition = m_tile.data.POSITION;
+            transform.localPosition = m_tile.transform.localPosition;
         }
 
         public override void InitAction()

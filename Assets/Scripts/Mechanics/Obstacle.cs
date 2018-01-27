@@ -4,12 +4,25 @@
 
     public class Obstacle : GGJMonoBehaviour
     {
-        public override void InitAction() {}
+        private HexaTile.TYPE m_type = HexaTile.TYPE.TREE;
 
-        public enum TYPE
+        private HexaTile m_tile = null;
+
+        private SpriteRenderer m_renderer = null;
+
+        public void SetType (HexaTile tile)
         {
-            TREE = 0,
-            ROCK
+            m_tile = tile;
+            m_type = m_tile.data.type;
+
+            transform.localPosition = m_tile.data.POSITION;
+
+            m_renderer = GetComponent<SpriteRenderer>();
+            m_renderer.sprite = Map.Instance.GetSprite(m_tile.data.type);
+
+            gameObject.SetActive(true);
         }
+
+        public override void InitAction() {}
     }
 }

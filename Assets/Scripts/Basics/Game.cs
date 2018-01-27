@@ -24,17 +24,17 @@
 
     public interface IUpdate
     {
-        void Update();
+        void CustomUpdate();
     }
 
     public interface IFixedUpdate
     {
-        void FixedUpdate();
+        void CustomFixedUpdate();
     }
 
     public interface ILateUpdate
     {
-        void LateUpdate();
+        void CustomLateUpdate();
     }
 
     public class Game : MonoBehaviour

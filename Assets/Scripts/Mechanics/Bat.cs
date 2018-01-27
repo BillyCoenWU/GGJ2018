@@ -1,16 +1,21 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿namespace GGJ
+{
+    using UnityEngine;
 
-public class Bat : MonoBehaviour {
+    public class Bat : GGJMonoBehaviour
+    {
+        private HexaTile m_tile = null;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+        public void SetInitialTile (HexaTile tile)
+        {
+            m_tile = tile;
+
+            transform.localPosition = m_tile.data.POSITION;
+        }
+
+        public override void InitAction()
+        {
+
+        }
+    }
 }

@@ -2,8 +2,10 @@
 {
     using UnityEngine;
     
-    public class Bird : MonoBehaviour
+    public class Bird : GGJMonoBehaviour
     {
+        public override void InitAction() { }
+
         public enum TYPE
         {
             HAWK = 0,

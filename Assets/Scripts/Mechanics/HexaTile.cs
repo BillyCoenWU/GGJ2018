@@ -1,17 +1,17 @@
 ﻿namespace GGJ
 {
     using UnityEngine;
-    using UnityEngine.U2D;
 
     public class HexaTile : MonoBehaviour
     {
         public enum TYPE
         {
-            NORMAL = 0,
-
+            GRASS = 0,
+            RIVER,
+            GROUND,
+            
             ROCK,
             TREE,
-            RIVER,
 
             ANIMAL,
             FOOD
@@ -32,7 +32,7 @@
 
             public readonly Vector2 POSITION = Constantes.VECTOR_TWO_ZERO;
             
-            private TYPE m_type = TYPE.NORMAL;
+            private TYPE m_type = TYPE.GRASS;
             public TYPE type
             {
                 get
@@ -83,10 +83,8 @@
             {
 
             }
-
-            /*
-            m_renderer.sprite = Resources.Load<SpriteAtlas>(Constantes.ATLAS_PATH).GetSprite(Constantes.PATHS[m_data.type]);
-            */
+            
+            //m_renderer.sprite = Map.Instance.GetSprite(m_data.type);
 
             transform.localPosition = m_data.POSITION;
 

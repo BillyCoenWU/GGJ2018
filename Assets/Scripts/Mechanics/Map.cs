@@ -1,9 +1,12 @@
 ﻿namespace GGJ
 {
     using UnityEngine;
-    
+    using UnityEngine.U2D;
+
     public class Map : Singleton<Map>
     {
+        private SpriteAtlas m_mapAtlas = null;
+        
         [SerializeField]
         private int m_foodCount = 0;
 
@@ -12,6 +15,13 @@
 
         [SerializeField]
         private int m_obstaclesCount = 0;
+
+        [Space(5.0f)]
+
+        [SerializeField]
+        private Bat m_bat = null;
+
+        [Space(5.0f)]
 
         [SerializeField]
         private Vector2 m_mapOffSet = Constantes.VECTOR_TWO_ZERO;
@@ -25,6 +35,8 @@
         private void Awake()
         {
             Instance = this;
+
+            m_mapAtlas = Resources.Load<SpriteAtlas>(Constantes.ATLAS_PATH);
         }
 
         private void Start()
@@ -56,11 +68,19 @@
 
                 posX += 1.0f;
             }
+
+
+            m_bat.SetInitialTile(GetTile(11, 20));
         }
 
         public HexaTile.TYPE GetRandomType ()
         {
             return (HexaTile.TYPE)Random.Range(0, 6);
+        }
+
+        public Sprite GetSprite (HexaTile.TYPE type)
+        {
+            return m_mapAtlas.GetSprite(Constantes.PATHS[type]);
         }
     }
 }

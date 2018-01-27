@@ -17,10 +17,13 @@
 
         public static readonly Dictionary<HexaTile.TYPE, string> PATHS = new Dictionary<HexaTile.TYPE, string>()
         {
-            { HexaTile.TYPE.NORMAL, "Normal" },
-            { HexaTile.TYPE.ROCK,   "Rock" },
+            { HexaTile.TYPE.GRASS,  "Grass" },
             { HexaTile.TYPE.RIVER,  "River" },
+            { HexaTile.TYPE.GROUND, "Ground" },
+
+            { HexaTile.TYPE.ROCK,   "Rock" },
             { HexaTile.TYPE.TREE,   "Tree" },
+
             { HexaTile.TYPE.ANIMAL, "Animal" },
             { HexaTile.TYPE.FOOD,   "Food" },
         };

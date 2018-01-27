@@ -3,12 +3,17 @@
     using UnityEngine;
     using System.Collections;
 
-    public class CameraControl : MonoBehaviour, ILateUpdate
+    public class CameraControl : Singleton<CameraControl>, ILateUpdate
     {
         [SerializeField]
         private GGJMonoBehaviour m_target = null;
 
         private Vector3 m_position = Constantes.VECTOR_THREE_ZERO;
+
+        private void Awake()
+        {
+            Instance = this;
+        }
 
         private void Start ()
         {
@@ -19,8 +24,8 @@
 
         public void CustomLateUpdate()
         {
-            m_position.x = m_target.transform.position.x;
-            m_position.y = m_target.transform.position.y;
+            m_position.x = Mathf.Clamp(m_target.transform.position.x, 0.0f, 35.75f);
+            m_position.y = Mathf.Clamp(m_target.transform.position.y, 0.0f, 13.4f);
 
             transform.localPosition = m_position;
         }
@@ -38,6 +43,7 @@
         {
             float lerp = 0.0f;
 
+            Vector3 position = Constantes.VECTOR_THREE_ZERO;
             Vector3 startPosition = transform.localPosition;
             Vector3 finalPosition = m_target.transform.localPosition;
             finalPosition.z = startPosition.z;
@@ -46,7 +52,11 @@
             {
                 lerp += Time.deltaTime;
 
-                transform.localPosition = Vector3.Lerp(startPosition, finalPosition, Easings.QuadraticEaseOut(lerp));
+                position = Vector3.Lerp(startPosition, finalPosition, Easings.QuadraticEaseOut(lerp));
+                position.x = Mathf.Clamp(position.x, 0.0f, 35.75f);
+                position.y = Mathf.Clamp(position.y, 0.0f, 13.4f);
+
+                transform.localPosition = position;
 
                 yield return null;
             }

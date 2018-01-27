@@ -31,9 +31,13 @@
             }
 
             public readonly Vector2 POSITION = Constantes.VECTOR_TWO_ZERO;
-            
-            public Obstacle obstacle = null;
 
+            public Food food = null;
+
+            public Bird animal = null;
+
+            public Obstacle obstacle = null;
+            
             private TYPE m_type = TYPE.GRASS;
             public TYPE type
             {
@@ -88,6 +92,11 @@
                 m_data.obstacle.SetType(this);
 
                 m_data.type = (TYPE)Random.Range(0, 2);
+            }
+            else if(m_data.type == TYPE.ANIMAL)
+            {
+                m_data.animal = AnimalsPool.Instance.Load();
+                m_data.animal.Init(this);
             }
 
             m_renderer = GetComponent<SpriteRenderer>();

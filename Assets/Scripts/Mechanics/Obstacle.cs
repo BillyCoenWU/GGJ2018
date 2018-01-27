@@ -16,12 +16,7 @@
             m_type = m_tile.data.type;
 
             transform.localPosition = m_tile.data.POSITION;
-
-            if()
-            {
-
-            }
-
+            
             m_renderer = GetComponent<SpriteRenderer>();
             m_renderer.sprite = Map.Instance.GetSprite(m_tile.data.type);
 

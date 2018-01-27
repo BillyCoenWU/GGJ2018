@@ -13,7 +13,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Tile
   - 
   - 
   - 
@@ -47,6 +47,15 @@ TagManager:
   - name: Objects
     uniqueID: 1332044763
     locked: 0
-  - name: Animals
+  - name: Diurnos
     uniqueID: 3730310117
+    locked: 0
+  - name: BlackPlane
+    uniqueID: 2413754329
+    locked: 0
+  - name: Noturnos
+    uniqueID: 280600359
+    locked: 0
+  - name: Sonar
+    uniqueID: 2045722381
     locked: 0

@@ -24,7 +24,13 @@
         private Button m_okButton = null;
 
         [SerializeField]
+        private Button m_optionButton = null;
+
+        [SerializeField]
         private GameObject m_optionsPanel = null;
+        
+        [SerializeField]
+        private GameObject m_gameOverPanel = null;
 
         [SerializeField]
         private Bat m_bat = null;
@@ -44,7 +50,7 @@
         private void Awake()
         {
             Instance = this;
-
+            m_gameOverPanel.SetActive(false);
             //fazer mudar sprite de som se tiver com som desligado
         }
 
@@ -112,6 +118,13 @@
         {
             Game.Resume();
             Game.LoadScene(SCENE.MAIN);
+        }
+
+        public void GameOver()
+        {
+            Game.Pause();
+            m_gameOverPanel.SetActive(true);
+            m_optionButton.interactable = false;
         }
     }
 }

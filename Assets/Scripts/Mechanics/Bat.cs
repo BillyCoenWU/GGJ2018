@@ -68,7 +68,7 @@
 
             if (life <= 0)
             {
-                //GG
+                InGameUI.Instance.GameOver();
             }
         }
 
@@ -76,6 +76,7 @@
         {
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
+
                 RaycastHit2D raycastHit2D = Physics2D.CircleCast(Camera.main.ScreenToWorldPoint(Input.mousePosition), 0.1f, Constantes.FOWARD, float.MaxValue, 1<<8);
 
                 if (raycastHit2D.collider != null)

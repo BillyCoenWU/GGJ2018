@@ -10,12 +10,12 @@
 
         private HexaTile m_tile = null;
 
-        public void Init (HexaTile tile)
+        public void Init(HexaTile tile)
         {
             m_tile = tile;
         }
 
-        public override void PlaySonar() {}
-        public override void InitAction() {}
+        public override void PlaySonar() { SonarPool.Instance.Load().Set(m_sonarInfos.sprite, transform.position, m_sonarInfos.maxScale, m_sonarInfos.maxCount,false); }
+        public override void InitAction() { }
     }
 }

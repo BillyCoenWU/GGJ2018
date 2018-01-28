@@ -256,6 +256,7 @@ MonoBehaviour:
   delayTime: 0.2
   speed: 0.2
   alphaSpeed: 0.2
+  collider: {fileID: 58222744891385100}
 --- !u!114 &114859756156469600
 MonoBehaviour:
   m_ObjectHideFlags: 1

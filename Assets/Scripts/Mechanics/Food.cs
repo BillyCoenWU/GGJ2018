@@ -28,7 +28,7 @@
 
         private SpriteRenderer m_renderer = null;
 
-        public void Init (HexaTile tile)
+        public void Init(HexaTile tile)
         {
             m_tile = tile;
 
@@ -43,17 +43,20 @@
             gameObject.SetActive(true);
         }
 
-        public int Eat ()
+        public int Eat()
         {
             m_tile.data.food = null;
             m_tile = null;
 
             FruitPool.Instance.Restore(this);
-            
+
             return m_type != TYPE.MOTH ? m_fruitFood : m_mothFood;
         }
 
-        public override void PlaySonar() { }
+        public override void PlaySonar()
+        {
+            SonarPool.Instance.Load().Set(m_sonarInfos.sprite, transform.position, m_sonarInfos.maxScale, m_sonarInfos.maxCount,false);
+        }
         public override void InitAction() { }
     }
 }

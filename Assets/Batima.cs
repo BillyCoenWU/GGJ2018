@@ -12,7 +12,7 @@ public class Batima : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            SonarPool.Instance.Load().Set(sprite, transform.position, maxScale, maxSonarCount);
+            SonarPool.Instance.Load().Set(sprite, transform.position, maxScale, maxSonarCount,true);
         }
     }
 }

@@ -12,6 +12,7 @@
         public float delayTime;
         public float speed;
         public float alphaSpeed;
+        public Collider2D collider;
 
         public void Init()
         {
@@ -22,8 +23,9 @@
                 StartCoroutine(EscalonarSonar(i, i * delayTime));
             }
         }
-        public void Set(Sprite sprite, Vector3 position, Vector3 maxScale, int maxSonarCount)
+        public void Set(Sprite sprite, Vector3 position, Vector3 maxScale, int maxSonarCount, bool isOrigin)
         {
+            collider.enabled = isOrigin;
             this.maxSonarCount = maxSonarCount;
             this.maxScale = maxScale;
             transform.position = position;

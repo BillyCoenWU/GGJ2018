@@ -26,7 +26,7 @@
             gameObject.SetActive(true);
         }
 
-        public override void PlaySonar() {}
+        public override void PlaySonar() { SonarPool.Instance.Load().Set(m_sonarInfos.sprite, transform.position, m_sonarInfos.maxScale, m_sonarInfos.maxCount,false); }
         public override void InitAction() {}
     }
 }

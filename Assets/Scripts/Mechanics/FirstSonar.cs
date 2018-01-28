@@ -1,12 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class FirstSonar : MonoBehaviour
+﻿namespace GGJ
 {
+    using UnityEngine;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public class FirstSonar : MonoBehaviour
     {
-        Debug.Log(collision.gameObject.name);
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            collision.GetComponent<GGJMonoBehaviour>().PlaySonar();
+           //Debug.Log(collision.gameObject.name);
+        }
     }
 }
+

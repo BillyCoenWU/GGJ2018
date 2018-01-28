@@ -41,7 +41,7 @@
 
         public override void PlaySonar()
         {
-
+            SonarPool.Instance.Load().Set(m_sonarInfos.sprite, transform.position, m_sonarInfos.maxScale, m_sonarInfos.maxCount,true);
         }
 
         public override void InitAction()

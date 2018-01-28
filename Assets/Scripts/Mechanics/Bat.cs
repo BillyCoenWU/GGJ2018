@@ -13,8 +13,14 @@
         [SerializeField]
         private int life = 3;
         
-        [SerializeField]
-        private int m_range = 5;
+        private int m_range = 1;
+        public int range
+        {
+            set
+            {
+                m_range = value;
+            }
+        }
 
         [SerializeField]
         private int m_foods = 10;

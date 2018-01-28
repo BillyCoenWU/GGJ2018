@@ -2476,7 +2476,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Bruno Braga\nCelso Fujimoto\nEmannuel Peixoto\nR\xF4mulo Gomes"
+  m_Text: "Bruno Braga\nCelso Fujimoto\nEmmanuel Peixoto\nR\xF4mulo Gomes"
 --- !u!222 &1689867275
 CanvasRenderer:
   m_ObjectHideFlags: 0

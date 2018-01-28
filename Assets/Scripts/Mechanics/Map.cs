@@ -37,6 +37,7 @@
         }
         
         private SpriteAtlas m_mapAtlas = null;
+        private SpriteAtlas m_outlinesAtlas = null;
 
         private List<GGJMonoBehaviour> m_dayBehavours = null;
         private List<GGJMonoBehaviour> m_nightBehavours = null;
@@ -125,6 +126,7 @@
             m_nightBehavours = new List<GGJMonoBehaviour>();
 
             m_mapAtlas = Resources.Load<SpriteAtlas>(Constantes.ATLAS_PATH);
+            m_outlinesAtlas = Resources.Load<SpriteAtlas>(Constantes.SONAR_PATH);
         }
 
         private void Start()
@@ -322,6 +324,11 @@
             return (HexaTile.TYPE)Random.Range(0, 3);
         }
 
+        public Sprite GetSonarSprite (int index)
+        {
+            return m_outlinesAtlas.GetSprite(Constantes.OUTLINES[index]);
+        }
+        
         public Sprite GetSprite (HexaTile.TYPE type)
         {
             return m_mapAtlas.GetSprite(Constantes.PATHS[type]);

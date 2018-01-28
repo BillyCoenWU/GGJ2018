@@ -58,8 +58,11 @@
                 colorLerp += Time.deltaTime * alphaSpeed;
                 sonarTransform[i].localScale = Vector3.Lerp(Constantes.VECTOR_THREE_ZERO, maxScale, Easings.QuadraticEaseOut(lerp));
 
-                sonarSpriteRenderer[i].color = new Color(1, 1, 1, Mathf.Lerp(1, 0, Easings.BounceEaseInOut(colorLerp)));
-
+                if (sonarSpriteRenderer[i].color.a > 0.1f)
+                    sonarSpriteRenderer[i].color = new Color(1, 1, 1, Mathf.Lerp(1, 0, Easings.CircularEaseOut(colorLerp)));
+                else
+                    sonarSpriteRenderer[i].color = new Color(1, 1, 1, 0);
+                Debug.Log(sonarSpriteRenderer[i].color.a);
                 yield return null;
             }
             sonarTransform[i].gameObject.SetActive(false);

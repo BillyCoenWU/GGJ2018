@@ -28,10 +28,21 @@
 
         [SerializeField]
         private float m_alphaSpeed = 0.5f;
-        
-        public void Set(Sprite sprite, Vector3 position, Vector3 maxScale, int maxSonarCount, bool isOrigin)
+
+        private bool m_isOrigin = true;
+        public bool isOrigin
         {
-            m_collider2D.enabled = isOrigin;
+            get
+            {
+                return m_isOrigin;
+            }
+        }
+        
+        public void Set(Sprite sprite, Vector3 position, Vector3 maxScale, int maxSonarCount, bool _isOrigin)
+        {
+            m_isOrigin = _isOrigin;
+
+            m_collider2D.enabled = m_isOrigin;
 
             m_maxScale = maxScale;
             m_maxSonarCount = maxSonarCount;

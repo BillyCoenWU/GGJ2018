@@ -29,6 +29,18 @@
         [SerializeField]
         private Bat m_bat = null;
 
+        [SerializeField]
+        private float m_range = 20.0f; 
+
+        private float m_sonarRange = 0.0f;
+        public float sonarRanger
+        {
+            get
+            {
+                return m_sonarRange;
+            }
+        }
+
         private void Awake()
         {
             Instance = this;
@@ -54,11 +66,17 @@
         public void ActiveSlider()
         {
             m_slider.gameObject.SetActive(true);
+            m_slider.value = 0.5f;
+            OnValueChanged(0);
         }
         
         public void OnValueChanged(int valor)
         {
-            // passar valores por morcego
+            int sliderValue = Mathf.RoundToInt(Mathf.Lerp(1, 10, m_slider.value));
+
+            m_bat.range = sliderValue;
+
+            m_sonarRange = m_range - sliderValue;
         }
 
         public void OnClickFinish ()

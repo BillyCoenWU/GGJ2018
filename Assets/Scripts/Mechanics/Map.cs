@@ -52,7 +52,7 @@
         {
             get
             {
-                return m_mapSizeX;
+                return m_mapSizeY;
             }
         }
 
@@ -62,7 +62,7 @@
         {
             get
             {
-                return m_mapSizeY;
+                return m_mapSizeX;
             }
         }
 
@@ -96,7 +96,7 @@
 
         public void ChangePhase ()
         {
-            m_phase = m_phase == PHASE.DAY ? PHASE.NIGHT : PHASE.NIGHT;
+            m_phase = m_phase == PHASE.DAY ? PHASE.NIGHT : PHASE.DAY;
 
             m_currentBehaviour = 0;
 
@@ -110,13 +110,13 @@
             }
         }
 
-        public void NightAct()
+        public void NightAct ()
         {
             if (m_currentBehaviour >= m_nightBehavours.Count)
             {
                 ChangePhase();
             }
-
+            
             m_nightBehavours[m_currentBehaviour].InitAction();
 
             m_currentBehaviour++;
@@ -128,7 +128,7 @@
             {
                 ChangePhase();
             }
-
+            
             m_dayBehavours[m_currentBehaviour].InitAction();
 
             m_currentBehaviour++;
@@ -160,6 +160,8 @@
             }
             
             m_bat.SetInitialTile(GetTile(11, 20));
+
+            StartCoroutine(PlaneToNight(false));
         }
 
         public void AddNewDayElement(GGJMonoBehaviour behaviour)
@@ -174,7 +176,7 @@
 
         public HexaTile.TYPE GetRandomType ()
         {
-            return (HexaTile.TYPE)Random.Range(0, 5);
+            return (HexaTile.TYPE)Random.Range(0, 3);
         }
 
         public Sprite GetSprite (HexaTile.TYPE type)
@@ -182,18 +184,23 @@
             return m_mapAtlas.GetSprite(Constantes.PATHS[type]);
         }
 
-        public Sprite GetAnimalSprite(Bird.TYPE type)
+        public Sprite GetAnimalSprite (Bird.TYPE type)
         {
             return m_mapAtlas.GetSprite(Constantes.ANIMALS[type]);
         }
 
-        private IEnumerator PlaneToNight ()
+        public Sprite GetFoodSprite(Food.TYPE type)
+        {
+            return m_mapAtlas.GetSprite(Constantes.FOODS[type]);
+        }
+
+        private IEnumerator PlaneToNight (bool doIt = true)
         {
             float lerp = 0.0f;
 
             Color color = Colors.White;
             
-            while(lerp < 0.95f)
+            while(lerp < 0.98f)
             {
                 lerp += Time.deltaTime;
 
@@ -203,17 +210,17 @@
 
                 yield return null;
             }
-            
-            m_bat.SetTarget();
+
+            m_bat.InitAction();
         }
 
-        private IEnumerator PlaneToDay()
+        private IEnumerator PlaneToDay ()
         {
-            float lerp = 0.0f;
+            float lerp = 1.0f;
 
             Color color = Colors.White;
 
-            while (lerp < 1.0f)
+            while (lerp > 0.0f)
             {
                 lerp -= Time.deltaTime;
 
@@ -223,7 +230,7 @@
 
                 yield return null;
             }
-
+            
             DayAct();
         }
     }

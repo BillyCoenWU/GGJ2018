@@ -86,24 +86,43 @@
         {
             m_data = data;
 
-            if(m_data.type == TYPE.ROCK || m_data.type == TYPE.TREE)
-            {
-                m_data.obstacle = ObstaclesPool.Instance.Load();
-                m_data.obstacle.SetType(this);
+            transform.localPosition = m_data.POSITION;
 
-                m_data.type = (TYPE)Random.Range(0, 2);
-            }
-            else if(m_data.type == TYPE.ANIMAL)
+            if (m_data.type == TYPE.GROUND || m_data.type == TYPE.GRASS)
             {
-                m_data.animal = AnimalsPool.Instance.Load();
-                m_data.animal.Init(this);
-            }
+                int random = Random.Range(0, 100);
 
+                switch(Random.Range(0, 3))
+                {
+                    case 0:
+                        if (random > 50)
+                        {
+                            m_data.obstacle = ObstaclesPool.Instance.Load();
+                            m_data.obstacle.SetType(this);
+                        }
+                        break;
+
+                    case 1:
+                        if (random > 85)
+                        {
+                            m_data.animal = AnimalsPool.Instance.Load();
+                            m_data.animal.Init(this);
+                        }
+                        break;
+
+                    case 2:
+                        if (random > 90)
+                        {
+                            m_data.food = FruitPool.Instance.Load();
+                            m_data.food.Init(this);
+                        }
+                        break;
+                }
+            }
+            
             m_renderer = GetComponent<SpriteRenderer>();
 
             m_renderer.sprite = Map.Instance.GetSprite(m_data.type);
-
-            transform.localPosition = m_data.POSITION;
 
             gameObject.SetActive(true);
         }

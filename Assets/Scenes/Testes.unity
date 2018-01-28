@@ -322,7 +322,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &887467476
 GameObject:
@@ -370,7 +370,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1047325578
 Prefab:
@@ -409,36 +409,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4684564048973344, guid: 4c3fc8a58e151fe4292094a01091411b, type: 2}
       propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1063140163557384, guid: 4c3fc8a58e151fe4292094a01091411b, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 212313996489490832, guid: 4c3fc8a58e151fe4292094a01091411b,
-        type: 2}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 212313996489490832, guid: 4c3fc8a58e151fe4292094a01091411b,
-        type: 2}
-      propertyPath: m_Color.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 212313996489490832, guid: 4c3fc8a58e151fe4292094a01091411b,
-        type: 2}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 212313996489490832, guid: 4c3fc8a58e151fe4292094a01091411b,
-        type: 2}
-      propertyPath: m_SortingLayerID
-      value: 280600359
-      objectReference: {fileID: 0}
-    - target: {fileID: 212313996489490832, guid: 4c3fc8a58e151fe4292094a01091411b,
-        type: 2}
-      propertyPath: m_SortingLayer
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4c3fc8a58e151fe4292094a01091411b, type: 2}
@@ -543,7 +514,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1982848541
 MonoBehaviour:
@@ -558,4 +529,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_count: 880
   m_reference: {fileID: 1015283743187934, guid: ce7d0e2ec17db9b44b9708977d34cbe5,
+    type: 2}
+--- !u!1 &2013305025
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2013305026}
+  - component: {fileID: 2013305027}
+  m_Layer: 0
+  m_Name: '[ FRUIT_POOL ]'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2013305026
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2013305025}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 38.659996, y: 16.7, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2013305027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2013305025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c55fd580812de34aa6488f54ec76472, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_count: 10
+  m_reference: {fileID: 1385506959344448, guid: 37ea8e67eb18d9b42858d51baaf87eee,
     type: 2}

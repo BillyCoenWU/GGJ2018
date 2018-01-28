@@ -9,58 +9,78 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1063140163557384}
+  m_RootGameObject: {fileID: 1385506959344448}
   m_IsPrefabParent: 1
---- !u!1 &1063140163557384
+--- !u!1 &1385506959344448
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4684564048973344}
-  - component: {fileID: 114203687142036940}
-  - component: {fileID: 212313996489490832}
+  - component: {fileID: 4888011416356592}
+  - component: {fileID: 212821783187344576}
+  - component: {fileID: 50034829191668662}
+  - component: {fileID: 114915046462978392}
   m_Layer: 0
-  m_Name: Bat
+  m_Name: Food
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4684564048973344
+  m_IsActive: 0
+--- !u!4 &4888011416356592
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1063140163557384}
+  m_GameObject: {fileID: 1385506959344448}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 38.659996, y: 16.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114203687142036940
+--- !u!50 &50034829191668662
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1385506959344448}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &114915046462978392
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1063140163557384}
+  m_GameObject: {fileID: 1385506959344448}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78176401fcb9cc74e9fc917068039912, type: 3}
+  m_Script: {fileID: 11500000, guid: 440d0565349d6684a826934eb0269654, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_range: 5
-  m_stamina: 1
-  m_speed: 2
---- !u!212 &212313996489490832
+  m_mothStamina: 0.1
+  m_fruitStamina: 0.1
+--- !u!212 &212821783187344576
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1063140163557384}
+  m_GameObject: {fileID: 1385506959344448}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -86,10 +106,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 280600359
-  m_SortingLayer: 5
-  m_SortingOrder: 4
-  m_Sprite: {fileID: 21300000, guid: 9a1b037a88a7042ad9ee829321c4b35a, type: 3}
+  m_SortingLayerID: -564657179
+  m_SortingLayer: 3
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: eec508ab702bcd0488be91a068edd1ba, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

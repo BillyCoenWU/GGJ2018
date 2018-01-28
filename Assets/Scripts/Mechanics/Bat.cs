@@ -21,8 +21,6 @@
             m_tile = tile;
 
             transform.localPosition = m_tile.transform.localPosition;
-
-            InitAction();
         }
 
         public void SetTarget ()
@@ -93,7 +91,7 @@
                 m_tile.data.food.Eat();
             }
 
-            Map.Instance.ChangePhase();
+            Map.Instance.NightAct();
         }
     }
 }

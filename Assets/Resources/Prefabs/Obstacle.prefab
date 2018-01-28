@@ -19,10 +19,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4698097582372260}
-  - component: {fileID: 212211548925852438}
   - component: {fileID: 114877926885635598}
   - component: {fileID: 50023470737875264}
   - component: {fileID: 58902027736873898}
+  - component: {fileID: 212211548925852438}
   m_Layer: 0
   m_Name: Obstacle
   m_TagString: Untagged

@@ -3,7 +3,7 @@
     using UnityEngine;
     using System.Collections.Generic;
 
-    public class AnimalsPool : Singleton<AnimalsPool>
+    public class FruitPool : Singleton<FruitPool>
     {
         [SerializeField]
         private int m_count = 0;
@@ -11,7 +11,7 @@
         [SerializeField]
         private Object m_reference = null;
 
-        private Queue<Bird> m_birds = null;
+        private Queue<Food> m_foods = null;
 
         private void Awake()
         {
@@ -23,30 +23,30 @@
 
         private void InitPool()
         {
-            m_birds = new Queue<Bird>();
+            m_foods = new Queue<Food>();
 
             for (int i = 0; i < m_count; i++)
             {
-                Restore(GetBird());
+                Restore(GetFood());
             }
         }
 
-        public Bird Load()
+        public Food Load()
         {
-            return m_birds.Count > 0 ? m_birds.Dequeue() : GetBird();
+            return m_foods.Count > 0 ? m_foods.Dequeue() : GetFood();
         }
 
-        public void Restore(Bird bird)
+        public void Restore(Food food)
         {
-            m_birds.Enqueue(bird);
+            m_foods.Enqueue(food);
 
-            bird.gameObject.SetActive(false);
-            bird.transform.SetParent(transform);
+            food.gameObject.SetActive(false);
+            food.transform.SetParent(transform);
         }
 
-        private Bird GetBird()
+        private Food GetFood()
         {
-            return CreateByReference().GetComponent<Bird>();
+            return CreateByReference().GetComponent<Food>();
         }
 
         private GameObject CreateByReference()

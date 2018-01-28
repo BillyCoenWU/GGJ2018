@@ -147,7 +147,26 @@
             {
                 Map.Instance.AddNewDayElement(this);
             }
+            
+            switch (m_type)
+            {
+                case TYPE.FRUIT_ONE:
+                    m_sonarInfos.sprite = Map.Instance.GetSonarSprite(0);
+                    break;
 
+                case TYPE.FRUIT_TWO:
+                    m_sonarInfos.sprite = Map.Instance.GetSonarSprite(1);
+                    break;
+
+                case TYPE.FRUIT_THREE:
+                    m_sonarInfos.sprite = Map.Instance.GetSonarSprite(2);
+                    break;
+
+                case TYPE.MOTH:
+                    m_sonarInfos.sprite = Map.Instance.GetSonarSprite(3);
+                    break;
+            }
+            
             m_renderer = GetComponent<SpriteRenderer>();
 
             m_renderer.sprite = Map.Instance.GetFoodSprite(m_type);
@@ -176,7 +195,26 @@
             m_tile.data.food = this;
 
             m_type = type;
+            
+            switch (m_type)
+            {
+                case TYPE.FRUIT_ONE:
+                    m_sonarInfos.sprite = Map.Instance.GetSonarSprite(0);
+                    break;
 
+                case TYPE.FRUIT_TWO:
+                    m_sonarInfos.sprite = Map.Instance.GetSonarSprite(1);
+                    break;
+
+                case TYPE.FRUIT_THREE:
+                    m_sonarInfos.sprite = Map.Instance.GetSonarSprite(2);
+                    break;
+
+                case TYPE.MOTH:
+                    m_sonarInfos.sprite = Map.Instance.GetSonarSprite(3);
+                    break;
+            }
+            
             if (m_type == TYPE.MOTH)
             {
                 Map.Instance.AddNewDayElement(this);

@@ -19,6 +19,17 @@
             m_type = (Random.Range(0, 100) > 50) ? HexaTile.TYPE.TREE : HexaTile.TYPE.ROCK;
 
             transform.localPosition = m_tile.data.POSITION;
+
+            switch(m_type)
+            {
+                case HexaTile.TYPE.TREE:
+                    m_sonarInfos.sprite = Map.Instance.GetSonarSprite(5);
+                    break;
+                    
+                case HexaTile.TYPE.ROCK:
+                    m_sonarInfos.sprite = Map.Instance.GetSonarSprite(4);
+                    break;
+            }
             
             m_renderer = GetComponent<SpriteRenderer>();
             m_renderer.sprite = Map.Instance.GetSprite(m_type);

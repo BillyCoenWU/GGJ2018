@@ -7,8 +7,9 @@
     {
         public const string DIURNO = "Diurnos";
         public const string NOTURNO = "Noturnos";
+        public const string SONAR_PATH = "Atlas/Sonar";
         public const string ATLAS_PATH = "Atlas/Hexagonos";
-        
+
         public static readonly Vector2 VECTOR_TWO_ONE = Vector2.one;
         public static readonly Vector2 VECTOR_TWO_ZERO = Vector2.zero;
 
@@ -17,6 +18,17 @@
         public static readonly Vector3 VECTOR_THREE_ZERO = Vector3.zero;
 
         public static readonly Quaternion IDENTITY = Quaternion.identity;
+
+        public static readonly Dictionary<int, string> OUTLINES = new Dictionary<int, string>()
+        {
+            { 0,    "Banana_Shape"  },
+            { 1,    "Mango_Shape"   },
+            { 2,    "Papaya_Shape"  },
+            { 3,    "Mouth_Shape"  },
+
+            { 4,    "Rock_Shape"     },
+            { 5,    "Tree_Shape"    }
+        };
 
         public static readonly Dictionary<Food.TYPE, string> FOODS = new Dictionary<Food.TYPE, string>()
         {

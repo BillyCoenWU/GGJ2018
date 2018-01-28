@@ -38,6 +38,8 @@
 
             public Bird animal = null;
 
+            public Morceguita morceguita = null;
+
             public Obstacle obstacle = null;
             
             private TYPE m_type = TYPE.GRASS;

@@ -70,6 +70,16 @@
 
         [SerializeField]
         private Bat m_bat = null;
+        public Bat bat
+        {
+            get
+            {
+                return m_bat;
+            }
+        }
+
+        [SerializeField]
+        private Morceguita m_batima = null;
 
         [SerializeField]
         private SpriteRenderer m_blackPlane = null;
@@ -183,6 +193,27 @@
             }
             
             m_bat.SetInitialTile(GetTile(11, 20));
+
+            int random = Random.Range(0, 4);
+
+            switch(random)
+            {
+                case 0:
+                    m_batima.Init(GetTile(1, 1));
+                    break;
+
+                case 1:
+                    m_batima.Init(GetTile(21, 1));
+                    break;
+
+                case 2:
+                    m_batima.Init(GetTile(21, 37));
+                    break;
+
+                case 3:
+                    m_batima.Init(GetTile(1, 38));
+                    break;
+            }
 
             StartCoroutine(PlaneToNight(false));
         }

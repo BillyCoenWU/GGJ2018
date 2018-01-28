@@ -190,6 +190,7 @@
 
             m_tile.data.animal = null;
             m_tile = tile;
+            m_tile.data.animal = this;
 
             Act();
         }

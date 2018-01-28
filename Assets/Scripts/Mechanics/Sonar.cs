@@ -12,7 +12,7 @@
         public float delayTime;
         public float speed;
         public float alphaSpeed;
-        public Collider2D collider;
+        public new Collider2D collider;
 
         public void Init()
         {

@@ -745,9 +745,15 @@ MonoBehaviour:
   m_rangeText: {fileID: 419315163}
   m_slider: {fileID: 1218022784}
   m_okButton: {fileID: 188456940}
+  m_optionButton: {fileID: 851612286}
   m_optionsPanel: {fileID: 137900928}
+  m_gameOverPanel: {fileID: 1089257312}
   m_bat: {fileID: 812218426}
+<<<<<<< HEAD
+  m_range: 13
+=======
   m_range: 20
+>>>>>>> 832b035622b6b00c05bf637dbda762db50a5bb5f
 --- !u!114 &696759408
 MonoBehaviour:
   m_ObjectHideFlags: 0

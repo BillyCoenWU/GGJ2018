@@ -16,7 +16,7 @@
         private void Awake()
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
 
             InitPool();
         }

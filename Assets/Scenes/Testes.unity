@@ -575,7 +575,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &419315161
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1103,10 +1103,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_respawnFood: 1
-  m_turnsToRespawn: 5
+  m_turnsToRespawn: 3
   m_foodCount: 15
-  m_enemysCount: 10
-  m_obstaclesCount: 50
+  m_enemysCount: 8
+  m_obstaclesCount: 30
   m_mapSizeX: 23
   m_mapSizeY: 40
   m_bat: {fileID: 812218426}
@@ -1390,6 +1390,11 @@ Prefab:
     - target: {fileID: 4684564048973344, guid: 4c3fc8a58e151fe4292094a01091411b, type: 2}
       propertyPath: m_RootOrder
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114203687142036940, guid: 4c3fc8a58e151fe4292094a01091411b,
+        type: 2}
+      propertyPath: m_speed
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4c3fc8a58e151fe4292094a01091411b, type: 2}
@@ -1682,10 +1687,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 0}
   m_HandleRect: {fileID: 1949430707}
   m_Direction: 0
-  m_MinValue: -5
+  m_MinValue: 1
   m_MaxValue: 5
   m_WholeNumbers: 1
-  m_Value: 0
+  m_Value: 5
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -1817,7 +1822,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1477354228
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2401,7 +2406,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c55fd580812de34aa6488f54ec76472, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_count: 10
+  m_count: 15
   m_reference: {fileID: 1385506959344448, guid: 37ea8e67eb18d9b42858d51baaf87eee,
     type: 2}
 --- !u!1 &2021901289

@@ -78,11 +78,11 @@
         
         public void OnValueChanged(int valor)
         {
-            int sliderValue = Mathf.RoundToInt(Mathf.Lerp(1, 10, m_slider.value));
+            int sliderValue = Mathf.RoundToInt(m_slider.value);
 
             m_bat.range = sliderValue;
 
-            m_sonarRange = m_range - sliderValue;
+            m_sonarRange = m_range - sliderValue * 2.0f;
         }
 
         public void OnClickFinish ()

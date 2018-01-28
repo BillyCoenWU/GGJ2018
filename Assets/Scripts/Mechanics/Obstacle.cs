@@ -4,6 +4,9 @@
 
     public class Obstacle : GGJMonoBehaviour
     {
+        [SerializeField]
+        private SonarData m_sonarInfos = null;
+
         private HexaTile.TYPE m_type = HexaTile.TYPE.TREE;
 
         private HexaTile m_tile = null;
@@ -23,6 +26,7 @@
             gameObject.SetActive(true);
         }
 
+        public override void PlaySonar() {}
         public override void InitAction() {}
     }
 }

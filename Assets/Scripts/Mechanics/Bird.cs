@@ -30,6 +30,9 @@
         private TYPE m_type = TYPE.HAWK;
 
         [SerializeField]
+        private SonarData m_sonarInfos = null;
+
+        [SerializeField]
         private float m_speed = 5.0f;
 
         [SerializeField]
@@ -62,6 +65,11 @@
             transform.localPosition = tile.data.POSITION;
 
             gameObject.SetActive(true);
+        }
+
+        public override void PlaySonar()
+        {
+
         }
 
         public override void InitAction()

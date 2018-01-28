@@ -6,6 +6,11 @@
     public class Bat : GGJMonoBehaviour, IUpdate
     {
         [SerializeField]
+        private SonarData m_sonarInfos = null;
+
+        [Space(5.0f)]
+
+        [SerializeField]
         private int life = 3;
         
         [SerializeField]
@@ -32,6 +37,11 @@
         public void SetTarget ()
         {
             CameraControl.Instance.SetTargetToFollow(this);
+        }
+
+        public override void PlaySonar()
+        {
+
         }
 
         public override void InitAction()
@@ -70,9 +80,9 @@
                     
                     if (tile.data.indexX != m_tile.data.indexX || tile.data.indexY != m_tile.data.indexY)
                     {
-                        if (tile.data.indexX >= m_tile.data.indexX - 5 && tile.data.indexX <= m_tile.data.indexX + 5)
+                        if (tile.data.indexX >= m_tile.data.indexX - m_range && tile.data.indexX <= m_tile.data.indexX + m_range)
                         {
-                            if (tile.data.indexY >= m_tile.data.indexY - 5 && tile.data.indexY <= m_tile.data.indexY + 5)
+                            if (tile.data.indexY >= m_tile.data.indexY - m_range && tile.data.indexY <= m_tile.data.indexY + m_range)
                             {
                                 if (tile.data.obstacle == null)
                                 {
@@ -81,12 +91,18 @@
                             }
                             else
                             {
-                                Debug.Log(4);
+#if UNITY_EDITOR
+                                Debug.Log("Clicou Longe");
+                                Debug.Log("COLOCAR SOM DE ERRO AQUI!");
+#endif
                             }
                         }
                         else
                         {
-                            Debug.Log(5);
+#if UNITY_EDITOR
+                            Debug.Log("Clicou Longe");
+                            Debug.Log("COLOCAR SOM DE ERRO AQUI!");
+#endif
                         }
                     }
                     

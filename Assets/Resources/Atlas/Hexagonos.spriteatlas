@@ -32,6 +32,7 @@ SpriteAtlas:
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: 114d743a865fc433584c327c49b9b9ea, type: 3}
   - {fileID: 21300000, guid: ba826fe68b652c24cae0be1ddbd95b92, type: 3}
   - {fileID: 21300000, guid: 4d917d12d6a154ce7b2458c895e8b6c4, type: 3}
   - {fileID: 21300000, guid: 9a1b037a88a7042ad9ee829321c4b35a, type: 3}
@@ -39,11 +40,21 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 39eb37dbaef3949a985d18ffed3d5aa9, type: 3}
   - {fileID: 21300000, guid: b6d766b8f34f2de4b8f4c3f7842da21c, type: 3}
   - {fileID: 21300000, guid: fc332a2940ca23948ba304f1dc26fb7b, type: 3}
+  - {fileID: 21300000, guid: 88715379f4cb94c4baf0fd95fa0aa8c6, type: 3}
   - {fileID: 21300000, guid: c3e7c380145974f8686a21927fde8b05, type: 3}
   - {fileID: 21300000, guid: dbea8c550814a4eb9bc52592c2b66e82, type: 3}
   - {fileID: 21300000, guid: 702f00f283a4d6346b85fd64efd19aa5, type: 3}
   - {fileID: 21300000, guid: 24d0634066f0c43e4b8372f74674877f, type: 3}
+  - {fileID: 21300016, guid: 114d743a865fc433584c327c49b9b9ea, type: 3}
+  - {fileID: 21300002, guid: 114d743a865fc433584c327c49b9b9ea, type: 3}
+  - {fileID: 21300006, guid: 114d743a865fc433584c327c49b9b9ea, type: 3}
+  - {fileID: 21300004, guid: 114d743a865fc433584c327c49b9b9ea, type: 3}
+  - {fileID: 21300010, guid: 114d743a865fc433584c327c49b9b9ea, type: 3}
+  - {fileID: 21300008, guid: 114d743a865fc433584c327c49b9b9ea, type: 3}
+  - {fileID: 21300014, guid: 114d743a865fc433584c327c49b9b9ea, type: 3}
+  - {fileID: 21300012, guid: 114d743a865fc433584c327c49b9b9ea, type: 3}
   m_PackedSpriteNamesToIndex:
+  - Slider_0
   - Rock
   - Banana
   - Bat
@@ -51,9 +62,18 @@ SpriteAtlas:
   - Mango
   - Tree
   - River
+  - Handler
   - Papaya
   - Hawk
   - Grass
   - Moth
+  - Slider_8
+  - Slider_1
+  - Slider_3
+  - Slider_2
+  - Slider_5
+  - Slider_4
+  - Slider_7
+  - Slider_6
   m_Tag: Hexagonos
   m_IsVariant: 0

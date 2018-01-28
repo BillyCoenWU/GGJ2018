@@ -18,6 +18,9 @@
         private HexaTile m_tile = null;
 
         [SerializeField]
+        private SonarData m_sonarInfos = null;
+
+        [SerializeField]
         private int m_mothFood = 1;
 
         [SerializeField]
@@ -49,7 +52,8 @@
             
             return m_type != TYPE.MOTH ? m_fruitFood : m_mothFood;
         }
-        
+
+        public override void PlaySonar() { }
         public override void InitAction() { }
     }
 }

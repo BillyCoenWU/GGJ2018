@@ -53,9 +53,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_sonarInfos:
-    maxCount: 0
-    sprite: {fileID: 0}
-    maxScale: {x: 1, y: 1, z: 1}
+    maxCount: 3
+    sprite: {fileID: 21300000, guid: 9e3da92f9803441698797655584fbafd, type: 3}
+    maxScale: {x: 6, y: 6, z: 1}
   m_maxActionsPerTurn: 4
   m_speed: 5
 --- !u!212 &212759607211871104

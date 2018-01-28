@@ -31,6 +31,9 @@
 
             m_tile.data.bat = this;
 
+            InGameUI.Instance.SetLives(life);
+            InGameUI.Instance.SetFood(m_foods);
+
             transform.localPosition = m_tile.transform.localPosition;
         }
 
@@ -41,26 +44,21 @@
 
         public override void PlaySonar()
         {
-            SonarPool.Instance.Load().Set(m_sonarInfos.sprite, transform.position, m_sonarInfos.maxScale, m_sonarInfos.maxCount,true);
+            SonarPool.Instance.Load().Set(m_sonarInfos.sprite, transform.localPosition, m_sonarInfos.maxScale, m_sonarInfos.maxCount, true);
+
+            Game.update += CustomUpdate;
         }
 
         public override void InitAction()
         {
-            m_foods--;
-
-            m_foods = Mathf.Clamp(m_foods, 0, 100);
-
-            if(m_foods <= 0)
-            {
-                TakeDamage();
-            }
-            
-            Game.update += CustomUpdate;
+            InGameUI.Instance.ActiveSlider();
         }
 
         public void TakeDamage ()
         {
             life--;
+
+            InGameUI.Instance.SetLives(life);
 
             if (life <= 0)
             {
@@ -110,6 +108,39 @@
             }
         }
 
+        private void FinishAction ()
+        {
+            if (m_tile.data.morceguita != null)
+            {
+                //GG
+            }
+            else
+            {
+                if (m_tile.data.food != null)
+                {
+                    m_foods += m_tile.data.food.Eat();
+                }
+
+                m_foods--;
+
+                m_foods = Mathf.Clamp(m_foods, 0, 100);
+
+                InGameUI.Instance.SetFood(m_foods);
+
+                if (m_foods <= 0)
+                {
+                    TakeDamage();
+                }
+
+                if(life <= 0)
+                {
+                    return;
+                }
+
+                Map.Instance.NightAct();
+            }
+        }
+
         private IEnumerator MoveToTile (HexaTile tile)
         {
             Game.update -= CustomUpdate;
@@ -129,12 +160,7 @@
             m_tile = tile;
             m_tile.data.bat = this;
 
-            if (m_tile.data.food != null)
-            {
-                m_foods += m_tile.data.food.Eat();
-            }
-
-            Map.Instance.NightAct();
+            FinishAction();
         }
     }
 }

@@ -7,13 +7,25 @@
 
     public class Map : Singleton<Map>
     {
+        [System.Serializable]
+        public class FoodRespawnData
+        {
+            public int turns = 3;
+            public Food.TYPE type = Food.TYPE.FRUIT_ONE;
+
+            public bool Respawn ()
+            {
+                turns--;
+
+                return (turns <= 0);
+            }
+        }
+
         public enum PHASE
         {
             NIGHT,
             DAY
         }
-
-        private int m_currentBehaviour = 0;
 
         private PHASE m_phase = PHASE.NIGHT;
         public PHASE phase
@@ -34,7 +46,17 @@
         {
             return m_map[x, y];
         }
-        
+
+        [SerializeField]
+        private bool m_respawnFood = true;
+
+        [SerializeField]
+        private int m_turnsToRespawn = 5;
+      
+        [Space (5.0f)]
+
+        private int m_turns = 0;
+
         [SerializeField]
         private int m_foodCount = 0;
 
@@ -43,6 +65,8 @@
 
         [SerializeField]
         private int m_obstaclesCount = 0;
+
+        private int m_currentBehaviour = 0;
 
         [Space(5.0f)]
 
@@ -78,6 +102,8 @@
             }
         }
 
+        public List<FoodRespawnData> m_foodsToRespawn = null;
+
         [SerializeField]
         private Morceguita m_batima = null;
 
@@ -93,6 +119,8 @@
         {
             Instance = this;
 
+            m_foodsToRespawn = new List<FoodRespawnData>();
+
             m_dayBehavours = new List<GGJMonoBehaviour>();
             m_nightBehavours = new List<GGJMonoBehaviour>();
 
@@ -101,6 +129,8 @@
 
         private void Start()
         {
+            InGameUI.Instance.SetTime(0);
+
             InitMap();
         }
 
@@ -111,14 +141,14 @@
             return (m_foodCount >= 0);
         }
 
-        public bool CanSpawnEnemy()
+        public bool CanSpawnEnemy ()
         {
             m_enemysCount--;
 
             return (m_enemysCount >= 0);
         }
 
-        public bool CanSpawnObstacle()
+        public bool CanSpawnObstacle ()
         {
             m_obstaclesCount--;
 
@@ -133,6 +163,46 @@
 
             if (m_phase == PHASE.DAY)
             {
+                m_turns++;
+                InGameUI.Instance.SetTime(m_turns);
+
+                if (m_respawnFood)
+                {
+                    int count = m_foodsToRespawn.Count;
+                    for (int i = count - 1; i >= 0; i--)
+                    {
+                        if (m_foodsToRespawn[i].Respawn())
+                        {
+                            Food food = FruitPool.Instance.Load();
+
+                            HexaTile tile = null;
+
+                            int x = 0;
+                            int y = 0;
+
+                            while (tile == null)
+                            {
+                                x = Random.Range(0, m_mapSizeX);
+                                y = Random.Range(0, m_mapSizeY);
+
+                                if (x > 0 && x < Map.Instance.mapSizeX && y > 0 && y < Map.Instance.mapSizeY)
+                                {
+                                    tile = Map.Instance.GetTile(y, x);
+
+                                    if (tile.data.animal != null || tile.data.bat != null || tile.data.food != null || tile.data.obstacle != null || tile.data.morceguita != null)
+                                    {
+                                        tile = null;
+                                    }
+                                }
+                            }
+
+                            food.Respawn(tile, m_foodsToRespawn[i].type);
+
+                            m_foodsToRespawn.RemoveAt(i);
+                        }
+                    }
+                }
+
                 StartCoroutine(PlaneToDay());
             }
             else
@@ -218,7 +288,21 @@
             StartCoroutine(PlaneToNight(false));
         }
 
-        public void AddNewDayElement(GGJMonoBehaviour behaviour)
+        public void AddNewFoodToRespawn (Food.TYPE type)
+        {
+            if(!m_respawnFood)
+            {
+                return;
+            }
+
+            FoodRespawnData data = new FoodRespawnData();
+            data.type = type;
+            data.turns = m_turnsToRespawn;
+
+            m_foodsToRespawn.Add(data);
+        }
+        
+        public void AddNewDayElement (GGJMonoBehaviour behaviour)
         {
             m_dayBehavours.Add(behaviour);
         }
@@ -226,6 +310,11 @@
         public void AddNewNightElement (GGJMonoBehaviour behaviour)
         {
             m_nightBehavours.Add(behaviour);
+        }
+
+        public void RemoveDayElement(GGJMonoBehaviour behaviour)
+        {
+            m_dayBehavours.Remove(behaviour);
         }
 
         public HexaTile.TYPE GetRandomType ()
@@ -243,7 +332,7 @@
             return m_mapAtlas.GetSprite(Constantes.ANIMALS[type]);
         }
 
-        public Sprite GetFoodSprite(Food.TYPE type)
+        public Sprite GetFoodSprite (Food.TYPE type)
         {
             return m_mapAtlas.GetSprite(Constantes.FOODS[type]);
         }
@@ -252,7 +341,7 @@
         {
             float lerp = 0.0f;
 
-            Color color = Colors.White;
+            Color color = Color.white;
             
             while(lerp < 0.98f)
             {
@@ -272,7 +361,7 @@
         {
             float lerp = 1.0f;
 
-            Color color = Colors.White;
+            Color color = Color.white;
 
             while (lerp > 0.0f)
             {

@@ -519,7 +519,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 6f7e547d2a26d234dbd9b8fc2de53825, type: 3}
-  maxScale: {x: 6, y: 6, z: 1}
+  maxScale: {x: 10, y: 10, z: 1}
   maxSonarCount: 3
 --- !u!1 &1203953070
 GameObject:

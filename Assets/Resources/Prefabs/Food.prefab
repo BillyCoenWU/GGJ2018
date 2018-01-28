@@ -73,8 +73,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 440d0565349d6684a826934eb0269654, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_mothStamina: 0.1
-  m_fruitStamina: 0.1
+  m_sonarInfos:
+    maxCount: 3
+    sprite: {fileID: 21300000, guid: 95ead1db224a34a3793b25d029422b81, type: 3}
+    maxScale: {x: 6, y: 6, z: 1}
+  m_maxActionsPerTurn: 1
+  m_fruitFood: 1
+  m_mothFood: 1
+  m_speed: 5
 --- !u!212 &212821783187344576
 SpriteRenderer:
   m_ObjectHideFlags: 1

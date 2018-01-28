@@ -27,7 +27,10 @@
             Map.Instance.AddNewNightElement(this);
         }
 
-        public override void PlaySonar() { SonarPool.Instance.Load().Set(m_sonarInfos.sprite, transform.position, m_sonarInfos.maxScale, m_sonarInfos.maxCount,false); }
+        public override void PlaySonar()
+        {
+            SonarPool.Instance.Load().Set(m_sonarInfos.sprite, transform.position, m_sonarInfos.maxScale, m_sonarInfos.maxCount,false);
+        }
 
         public override void InitAction()
         {
@@ -122,14 +125,12 @@
         private IEnumerator Move(HexaTile tile)
         {
             float lerp = 0.0f;
-
-            Vector3 startPosition = transform.position;
-
+            
             while (lerp < 1.0f)
             {
                 lerp += Time.deltaTime * m_speed;
 
-                transform.position = Vector3.Lerp(startPosition, tile.data.POSITION, lerp);
+                transform.position = Vector3.Lerp(m_tile.data.POSITION, tile.data.POSITION, lerp);
 
                 yield return null;
             }

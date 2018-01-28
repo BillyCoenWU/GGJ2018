@@ -2,50 +2,74 @@
 {
     using UnityEngine;
     using System.Collections;
+
     public class Sonar : MonoBehaviour
     {
-        public SpriteRenderer[] sonarSpriteRenderer;
-        public Transform[] sonarTransform;
-        public Vector3 maxScale;
-        [Range(1, 5)]
-        public int maxSonarCount;
-        public float delayTime;
-        public float speed;
-        public float alphaSpeed;
-        public new Collider2D collider;
+        [SerializeField]
+        private SpriteRenderer[] m_sonarSpriteRenderer = null;
 
-        public void Init()
-        {
-            gameObject.SetActive(true);
-            for (int i = 0; i < maxSonarCount; i++)
-            {
-                sonarTransform[i].gameObject.SetActive(true);
-                StartCoroutine(EscalonarSonar(i, i * delayTime));
-            }
-        }
+        [SerializeField]
+        private Transform[] m_sonarTransform = null;
+
+        [SerializeField]
+        private Collider2D m_collider2D = null;
+
+        [SerializeField]
+        private Vector3 m_maxScale = Constantes.VECTOR_THREE_ZERO;
+
+        [SerializeField, Range(1, 5)]
+        private int m_maxSonarCount = 1;
+
+        [SerializeField]
+        private float m_delayTime = 0.2f;
+
+        [SerializeField]
+        private float m_speed = 0.2f;
+
+        [SerializeField]
+        private float m_alphaSpeed = 0.5f;
+        
         public void Set(Sprite sprite, Vector3 position, Vector3 maxScale, int maxSonarCount, bool isOrigin)
         {
-            collider.enabled = isOrigin;
-            this.maxSonarCount = maxSonarCount;
-            this.maxScale = maxScale;
+            m_collider2D.enabled = isOrigin;
+
+            m_maxScale = maxScale;
+            m_maxSonarCount = maxSonarCount;
+
             transform.position = position;
-            foreach (var item in sonarSpriteRenderer)
+
+            for (int i = 0; i < maxSonarCount; i++)
             {
-                item.sprite = sprite;
+                m_sonarSpriteRenderer[i].sprite = sprite;
             }
+            
             Init();
         }
 
-        public void Finish()
+        private void Init()
         {
-            foreach (var item in sonarTransform)
+            gameObject.SetActive(true);
+
+            for (int i = 0; i < m_maxSonarCount; i++)
             {
-                item.transform.localScale = Vector3.zero;
+                m_sonarTransform[i].gameObject.SetActive(true);
+
+                StartCoroutine(EscalonarSonar(i, i * m_delayTime));
             }
+        }
+
+        private void Finish()
+        {
+            for (int i = 0; i < m_maxSonarCount; i++)
+            {
+                m_sonarSpriteRenderer[i].color = Color.white;
+                m_sonarTransform[i].localScale = Constantes.VECTOR_THREE_ZERO;
+            }
+            
             SonarPool.Instance.Restore(this);
         }
 
-        IEnumerator EscalonarSonar(int i, float delay)
+        private IEnumerator EscalonarSonar(int i, float delay)
         {
             yield return new WaitForSeconds(delay);
 
@@ -54,24 +78,29 @@
 
             while (lerp < 1.0f)
             {
-                lerp += Time.deltaTime * speed;
-                colorLerp += Time.deltaTime * alphaSpeed;
-                sonarTransform[i].localScale = Vector3.Lerp(Constantes.VECTOR_THREE_ZERO, maxScale, Easings.QuadraticEaseOut(lerp));
+                lerp += Time.deltaTime * m_speed;
+                colorLerp += Time.deltaTime * m_alphaSpeed;
 
-                if (sonarSpriteRenderer[i].color.a > 0.1f)
-                    sonarSpriteRenderer[i].color = new Color(1, 1, 1, Mathf.Lerp(1, 0, Easings.CircularEaseOut(colorLerp)));
+                m_sonarTransform[i].localScale = Vector3.Lerp(Constantes.VECTOR_THREE_ZERO, m_maxScale, Easings.QuadraticEaseOut(lerp));
+
+                if (m_sonarSpriteRenderer[i].color.a > 0.1f)
+                {
+                    m_sonarSpriteRenderer[i].color = new Color(1.0f, 1.0f, 1.0f, Mathf.Lerp(1.0f, 0.0f, Easings.CircularEaseOut(colorLerp)));
+                }
                 else
-                    sonarSpriteRenderer[i].color = new Color(1, 1, 1, 0);
-                Debug.Log(sonarSpriteRenderer[i].color.a);
+                {
+                    m_sonarSpriteRenderer[i].color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+                }
+                
                 yield return null;
             }
-            sonarTransform[i].gameObject.SetActive(false);
 
-            if (i >= maxSonarCount - 1)
+            m_sonarTransform[i].gameObject.SetActive(false);
+
+            if (i >= (m_maxSonarCount-1))
             {
                 Finish();
             }
         }
-
     }
 }

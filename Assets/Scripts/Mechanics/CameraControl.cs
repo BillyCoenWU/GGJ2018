@@ -22,6 +22,11 @@
             Game.lateUpdate += CustomLateUpdate;
         }
 
+        private void OnDisable()
+        {
+            Game.lateUpdate -= CustomLateUpdate;
+        }
+
         public void CustomLateUpdate()
         {
             m_position.x = Mathf.Clamp(m_target.transform.position.x, 0.0f, 35.75f);

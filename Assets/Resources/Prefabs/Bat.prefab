@@ -52,8 +52,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78176401fcb9cc74e9fc917068039912, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_sonarInfos:
+    maxCount: 3
+    sprite: {fileID: 21300000, guid: 6f7e547d2a26d234dbd9b8fc2de53825, type: 3}
+    maxScale: {x: 6, y: 6, z: 1}
+  life: 3
   m_range: 5
-  m_stamina: 1
+  m_foods: 10
   m_speed: 2
 --- !u!212 &212313996489490832
 SpriteRenderer:

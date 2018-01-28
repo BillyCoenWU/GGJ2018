@@ -18,10 +18,10 @@
         private HexaTile m_tile = null;
 
         [SerializeField]
-        private float m_mothStamina = 0.1f;
+        private int m_mothFood = 1;
 
         [SerializeField]
-        private float m_fruitStamina = 0.1f;
+        private int m_fruitFood = 1;
 
         private SpriteRenderer m_renderer = null;
 
@@ -40,14 +40,14 @@
             gameObject.SetActive(true);
         }
 
-        public float Eat ()
+        public int Eat ()
         {
             m_tile.data.food = null;
             m_tile = null;
 
             FruitPool.Instance.Restore(this);
             
-            return m_type != TYPE.MOTH ? m_fruitStamina : m_mothStamina;
+            return m_type != TYPE.MOTH ? m_fruitFood : m_mothFood;
         }
         
         public override void InitAction() { }

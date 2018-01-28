@@ -32,6 +32,8 @@
 
             public readonly Vector2 POSITION = Constantes.VECTOR_TWO_ZERO;
 
+            public Bat bat = null;
+
             public Food food = null;
 
             public Bird animal = null;
@@ -97,24 +99,33 @@
                     case 0:
                         if (random > 50)
                         {
-                            m_data.obstacle = ObstaclesPool.Instance.Load();
-                            m_data.obstacle.SetType(this);
+                            if (Map.Instance.CanSpawnObstacle())
+                            {
+                                m_data.obstacle = ObstaclesPool.Instance.Load();
+                                m_data.obstacle.SetType(this);
+                            }
                         }
                         break;
 
                     case 1:
                         if (random > 85)
                         {
-                            m_data.animal = AnimalsPool.Instance.Load();
-                            m_data.animal.Init(this);
+                            if (Map.Instance.CanSpawnEnemy())
+                            {
+                                m_data.animal = AnimalsPool.Instance.Load();
+                                m_data.animal.Init(this);
+                            }
                         }
                         break;
 
                     case 2:
                         if (random > 90)
                         {
-                            m_data.food = FruitPool.Instance.Load();
-                            m_data.food.Init(this);
+                            if (Map.Instance.CanSpawnFood())
+                            {
+                                m_data.food = FruitPool.Instance.Load();
+                                m_data.food.Init(this);
+                            }
                         }
                         break;
                 }

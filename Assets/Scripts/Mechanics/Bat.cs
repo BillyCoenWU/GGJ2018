@@ -6,10 +6,14 @@
     public class Bat : GGJMonoBehaviour, IUpdate
     {
         [SerializeField]
+        private int life = 3;
+        
+        [SerializeField]
         private int m_range = 5;
 
         [SerializeField]
-        private float m_stamina = 1.0f;
+        private int m_foods = 10;
+
 
         [SerializeField]
         private float m_speed = 2.0f;
@@ -19,6 +23,8 @@
         public void SetInitialTile (HexaTile tile)
         {
             m_tile = tile;
+
+            m_tile.data.bat = this;
 
             transform.localPosition = m_tile.transform.localPosition;
         }
@@ -30,7 +36,26 @@
 
         public override void InitAction()
         {
+            m_foods--;
+
+            m_foods = Mathf.Clamp(m_foods, 0, 100);
+
+            if(m_foods <= 0)
+            {
+                TakeDamage();
+            }
+            
             Game.update += CustomUpdate;
+        }
+
+        public void TakeDamage ()
+        {
+            life--;
+
+            if (life <= 0)
+            {
+                //GG
+            }
         }
 
         public void CustomUpdate()
@@ -84,11 +109,13 @@
                 yield return null;
             }
 
+            m_tile.data.bat = null;
             m_tile = tile;
+            m_tile.data.bat = this;
 
-            if(m_tile.data.food != null)
+            if (m_tile.data.food != null)
             {
-                m_tile.data.food.Eat();
+                m_foods += m_tile.data.food.Eat();
             }
 
             Map.Instance.NightAct();

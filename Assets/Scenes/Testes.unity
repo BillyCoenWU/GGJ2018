@@ -351,9 +351,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 621048c45ad44b447801b2448cb294a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_foodCount: 0
+  m_foodCount: 15
   m_enemysCount: 10
-  m_obstaclesCount: 0
+  m_obstaclesCount: 50
   m_mapSizeX: 23
   m_mapSizeY: 40
   m_bat: {fileID: 812218426}

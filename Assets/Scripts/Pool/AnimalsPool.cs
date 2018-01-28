@@ -33,7 +33,8 @@
 
         public Bird Load()
         {
-            return m_birds.Count > 0 ? m_birds.Dequeue() : GetBird();
+            return m_birds.Dequeue();
+            //return m_birds.Count > 0 ? m_birds.Dequeue() : GetBird();
         }
 
         public void Restore(Bird bird)

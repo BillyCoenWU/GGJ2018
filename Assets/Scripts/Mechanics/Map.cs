@@ -94,6 +94,27 @@
             InitMap();
         }
 
+        public bool CanSpawnFood ()
+        {
+            m_foodCount--;
+            
+            return (m_foodCount >= 0);
+        }
+
+        public bool CanSpawnEnemy()
+        {
+            m_enemysCount--;
+
+            return (m_enemysCount >= 0);
+        }
+
+        public bool CanSpawnObstacle()
+        {
+            m_obstaclesCount--;
+
+            return (m_obstaclesCount >= 0);
+        }
+
         public void ChangePhase ()
         {
             m_phase = m_phase == PHASE.DAY ? PHASE.NIGHT : PHASE.DAY;
@@ -115,6 +136,7 @@
             if (m_currentBehaviour >= m_nightBehavours.Count)
             {
                 ChangePhase();
+                return;
             }
             
             m_nightBehavours[m_currentBehaviour].InitAction();
@@ -127,6 +149,7 @@
             if(m_currentBehaviour >= m_dayBehavours.Count)
             {
                 ChangePhase();
+                return;
             }
             
             m_dayBehavours[m_currentBehaviour].InitAction();

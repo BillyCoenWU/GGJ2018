@@ -30,6 +30,9 @@
         private TYPE m_type = TYPE.HAWK;
 
         [SerializeField]
+        private float m_speed = 5.0f;
+
+        [SerializeField]
         private int m_maxActionsPerTurn = 1;
         private int m_movementsLeft = 0;
         
@@ -74,6 +77,15 @@
 
             if(m_movementsLeft < 0)
             {
+                if (m_tile.data.food != null)
+                {
+                    m_tile.data.food.Eat();
+                }
+                else if (m_tile.data.bat != null)
+                {
+                    m_tile.data.bat.TakeDamage();
+                }
+
                 if(m_type == TYPE.HAWK)
                 {
                     Map.Instance.DayAct();
@@ -142,6 +154,11 @@
                 if (x > 0 && x < Map.Instance.mapSizeX && y > 0 && y < Map.Instance.mapSizeY)
                 {
                     tile = Map.Instance.GetTile(y, x);
+
+                    if (tile.data.animal != null)
+                    {
+                        tile = null;
+                    }
                 }
             }
 
@@ -156,7 +173,7 @@
 
             while (lerp < 1.0f)
             {
-                lerp += Time.deltaTime;
+                lerp += Time.deltaTime * m_speed;
 
                 transform.position = Vector3.Lerp(startPosition, tile.data.POSITION, lerp);
 

@@ -1,5 +1,6 @@
 ﻿namespace GGJ
 {
+    using RGSMS.Sound;
     using UnityEngine;
     using System.Collections;
 
@@ -7,6 +8,13 @@
     {
         [SerializeField]
         private SonarData m_sonarInfos = null;
+
+        [Space(5.0f)]
+
+        [SerializeField]
+        private GameAudioObject m_wing = null;
+        [SerializeField]
+        private GameAudioObject m_eat = null;
 
         [Space(5.0f)]
 
@@ -36,6 +44,8 @@
             m_tile = tile;
 
             m_tile.data.bat = this;
+
+            m_wing.Play(true);
 
             InGameUI.Instance.SetLives(life);
             InGameUI.Instance.SetFood(m_foods);
@@ -119,12 +129,24 @@
         {
             if (m_tile.data.morceguita != null)
             {
-                //GG
+                InGameUI.Instance.EndGame();
+                return;
             }
             else
             {
+                if (m_tile.data.animal != null)
+                {
+                    TakeDamage();
+
+                    if (life <= 0)
+                    {
+                        return;
+                    }
+                }
+                
                 if (m_tile.data.food != null)
                 {
+                    m_eat.Play();
                     m_foods += m_tile.data.food.Eat();
                 }
 

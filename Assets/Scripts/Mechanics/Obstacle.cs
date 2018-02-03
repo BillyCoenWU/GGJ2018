@@ -16,6 +16,8 @@
         public void SetType (HexaTile tile)
         {
             m_tile = tile;
+            m_tile.data.obstacle = this;
+
             m_type = (Random.Range(0, 100) > 50) ? HexaTile.TYPE.TREE : HexaTile.TYPE.ROCK;
 
             transform.localPosition = m_tile.data.POSITION;

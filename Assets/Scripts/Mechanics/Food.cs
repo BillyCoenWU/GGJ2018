@@ -138,7 +138,6 @@
         public void Init (HexaTile tile)
         {
             m_tile = tile;
-
             m_tile.data.food = this;
 
             m_type = (Random.Range(0, 100) > 90) ? TYPE.MOTH : (TYPE)Random.Range(0, 3);
@@ -191,9 +190,7 @@
         public void Respawn (HexaTile tile, TYPE type)
         {
             m_tile = tile;
-
             m_tile.data.food = this;
-
             m_type = type;
             
             switch (m_type)

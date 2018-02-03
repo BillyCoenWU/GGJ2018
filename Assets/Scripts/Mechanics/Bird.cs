@@ -44,6 +44,7 @@
         public void Init (HexaTile tile)
         {
             m_tile = tile;
+            m_tile.data.animal = this;
 
             m_renderer = GetComponent<SpriteRenderer>();
 
@@ -89,7 +90,8 @@
                 {
                     m_tile.data.food.Eat();
                 }
-                else if (m_tile.data.bat != null)
+
+                if (m_tile.data.bat != null)
                 {
                     m_tile.data.bat.TakeDamage();
                 }

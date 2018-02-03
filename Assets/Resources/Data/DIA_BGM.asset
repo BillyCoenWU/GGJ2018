@@ -9,8 +9,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d40e6571cfb8af43942d0f26acea2b9, type: 3}
-  m_Name: BasicSoundData
+  m_Name: DIA_BGM
   m_EditorClassIdentifier: 
-  m_name: 
-  volume: 1
-  clip: {fileID: 0}
+  m_volume: 1
+  m_pitch: 1
+  m_clip: {fileID: 8300000, guid: 94b29c36b66cb134c9912b20196679d3, type: 3}

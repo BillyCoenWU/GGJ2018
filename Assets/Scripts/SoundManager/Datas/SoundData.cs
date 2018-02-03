@@ -16,7 +16,7 @@
                 }
             }
 
-            [SerializeField, Range(0.1f, 1.0f)]
+            [SerializeField, Range(0.1f, 3.0f)]
             public float m_pitch = 1.0f;
             public float pitch
             {

@@ -8,11 +8,10 @@
         public GameObject mainMenu, optionsMenu, title, credits, tutorial;
         public Image soundImg;
         public Sprite soundIconOn, soundIconOff;
-        bool hasSound;
 
         void Start()
         {
-            hasSound = true;
+            soundImg.sprite = (AudioListener.volume == 1.0f) ? soundIconOn : soundIconOff;
             InitMenu();
         }
 
@@ -45,8 +44,8 @@
 
         public void SoundToggle()
         {
-            hasSound = !hasSound;
-            soundImg.sprite = hasSound ? soundIconOn : soundIconOff;
+            AudioListener.volume = (AudioListener.volume == 0.0f) ? 1.0f : 0.0f;
+            soundImg.sprite = (AudioListener.volume == 1.0f) ? soundIconOn : soundIconOff;
         }
 
         public void ReadyPlay()

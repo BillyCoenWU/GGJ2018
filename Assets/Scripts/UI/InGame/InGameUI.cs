@@ -11,12 +11,7 @@
         private Text m_foodText = null;
         [SerializeField]
         private Text m_timeText = null;
-
-        [SerializeField]
-        private Text m_sonarText = null;
-        [SerializeField]
-        private Text m_rangeText = null;
-
+        
         [SerializeField]
         private Slider m_slider = null;
 
@@ -27,16 +22,25 @@
         private Button m_optionButton = null;
 
         [SerializeField]
+        private Image m_soundButton = null;
+
+        [SerializeField]
         private GameObject m_optionsPanel = null;
         
         [SerializeField]
         private GameObject m_gameOverPanel = null;
 
         [SerializeField]
+        private GameObject m_endGamePanel = null;
+
+        [SerializeField]
         private Bat m_bat = null;
 
         [SerializeField]
-        private float m_range = 20.0f; 
+        private float m_range = 20.0f;
+
+        [SerializeField]
+        private Sprite[] m_soundsSprites = null;
 
         private float m_sonarRange = 0.0f;
         public float sonarRanger
@@ -51,6 +55,12 @@
         {
             Instance = this;
             m_gameOverPanel.SetActive(false);
+            m_endGamePanel.SetActive(false);
+
+            m_soundButton.sprite = m_soundsSprites[(AudioListener.volume == 0.0f) ? 0 : 1];
+
+            //(AudioListener.volume == 0.0f);
+
             //fazer mudar sprite de som se tiver com som desligado
         }
 
@@ -72,7 +82,7 @@
         public void ActiveSlider()
         {
             m_slider.gameObject.SetActive(true);
-            m_slider.value = 0.5f;
+            m_slider.value = 3f;
             OnValueChanged(0);
         }
         
@@ -111,7 +121,8 @@
 
         public void OnClickSom()
         {
-            // ativar e desativar som
+            AudioListener.volume = (AudioListener.volume == 0.0f) ? 1.0f : 0.0f;
+            m_soundButton.sprite = m_soundsSprites[(AudioListener.volume == 0.0f) ? 0 : 1];
         }
 
         public void OnClickExit()
@@ -120,11 +131,24 @@
             Game.LoadScene(SCENE.MAIN);
         }
 
+        public void Restart ()
+        {
+            Game.Resume();
+            Game.LoadScene(SCENE.INGAME);
+        }
+
         public void GameOver()
         {
             Game.Pause();
             m_gameOverPanel.SetActive(true);
             m_optionButton.interactable = false;
         }
+
+        public void EndGame()
+        {
+            m_endGamePanel.SetActive(true);
+            GetComponent<Animator>().SetTrigger("EndGame");
+        }
+        
     }
 }

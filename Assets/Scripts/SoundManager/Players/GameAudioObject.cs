@@ -34,8 +34,7 @@
                 {
                     DontDestroyOnLoad(gameObject);
                 }
-
-                SoundManager.Instance.gameAudioLists.Add(this);
+                
                 m_source = GetComponent<AudioSource>();
                 LoadData();
 
@@ -44,12 +43,7 @@
                     Play();
                 }
             }
-
-            private void OnDestroy()
-            {
-                SoundManager.Instance.gameAudioLists.Remove(this);
-            }
-
+            
             private void LoadData()
             {
                 if (m_source.clip != null)

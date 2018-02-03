@@ -91,47 +91,6 @@
             m_data = data;
 
             transform.localPosition = m_data.POSITION;
-
-            if (m_data.type == TYPE.GROUND || m_data.type == TYPE.GRASS)
-            {
-                int random = Random.Range(0, 100);
-
-                switch(Random.Range(0, 3))
-                {
-                    case 0:
-                        if (random > 50)
-                        {
-                            if (Map.Instance.CanSpawnObstacle())
-                            {
-                                m_data.obstacle = ObstaclesPool.Instance.Load();
-                                m_data.obstacle.SetType(this);
-                            }
-                        }
-                        break;
-
-                    case 1:
-                        if (random > 85)
-                        {
-                            if (Map.Instance.CanSpawnEnemy())
-                            {
-                                m_data.animal = AnimalsPool.Instance.Load();
-                                m_data.animal.Init(this);
-                            }
-                        }
-                        break;
-
-                    case 2:
-                        if (random > 90)
-                        {
-                            if (Map.Instance.CanSpawnFood())
-                            {
-                                m_data.food = FruitPool.Instance.Load();
-                                m_data.food.Init(this);
-                            }
-                        }
-                        break;
-                }
-            }
             
             m_renderer = GetComponent<SpriteRenderer>();
 
@@ -139,36 +98,5 @@
 
             gameObject.SetActive(true);
         }
-
-        /*
-        public void SetColor ()
-        {
-            switch (m_data.type)
-            {
-                default:
-                    break;
-
-                case TYPE.ANIMAL:
-                    m_renderer.color = Colors.DarkRed;
-                    break;
-
-                case TYPE.FOOD:
-                    m_renderer.color = Colors.YellowGreen;
-                    break;
-
-                case TYPE.TREE:
-                    m_renderer.color = Colors.ForestGreen;
-                    break;
-
-                case TYPE.RIVER:
-                    m_renderer.color = Colors.LightBlue;
-                    break;
-
-                case TYPE.ROCK:
-                    m_renderer.color = Colors.Brown;
-                    break;
-            }
-        }
-        */
     }
 }
